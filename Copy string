@@ -1,0 +1,9 @@
+def copy_string(s):
+    return s  # Simply return the original string
+
+# Example usage
+if __name__ == "__main__":
+    original_string = "Hello, World!"
+    copied_string = copy_string(original_string)
+    print("Original string:", original_string)
+    print("Copied string:", copied_string)
