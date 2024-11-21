@@ -1,0 +1,12 @@
+def string_length(s):
+    length = 0  # Initialize a counter for the length
+    for char in s:  # Loop through each character in the string
+        length += 1  # Increment the counter for each character
+    return length  # Return the total length
+
+# Example usage
+if __name__ == "__main__":
+    example_string = "Hello, World!"
+    length_of_string = string_length(example_string)
+    print("Original string:", example_string)
+    print("Length of the string:", length_of_string)
