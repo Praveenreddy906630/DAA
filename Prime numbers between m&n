@@ -1,0 +1,21 @@
+def is_prime(num):
+    if num <= 1:
+        return False  # 0 and 1 are not prime numbers
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False  # Found a divisor, not a prime
+    return True  # No divisors found, it's a prime
+
+def find_primes(m, n):
+    primes = []  # List to store prime numbers
+    for num in range(m, n + 1):  # Loop from m to n (inclusive)
+        if is_prime(num):
+            primes.append(num)  # Add prime number to the list
+    return primes
+
+# Example usage
+if __name__ == "__main__":
+    m = 10
+    n = 50
+    prime_numbers = find_primes(m, n)
+    print(f"Prime numbers between {m} and {n}:", prime_numbers)
