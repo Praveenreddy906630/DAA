@@ -1,0 +1,7 @@
+def is_armstrong_number(num):
+    # Convert the number to string to easily iterate over digits
+    digits = str(num)
+    num_digits = len(digits)  # Count the number of digits
+    sum_of_powers = sum(int(digit) ** num_digits for digit in digits)  # Calculate the sum of powers
+
+    return sum_of_powers == num  # ⬤
