@@ -1,0 +1,43 @@
+import sys
+
+def prims_algorithm(graph):
+    num_vertices = len(graph)
+    selected = [False] * num_vertices  # Track vertices included in MST
+    selected[0] = True  # Start from the first vertex
+    edges = []  # Store the edges of the MST
+
+    for _ in range(num_vertices - 1):
+        minimum = sys.maxsize  # Initialize minimum weight
+        x = 0  # Row index
+        y = 0  # Column index
+
+        # Find the minimum weight edge
+        for i in range(num_vertices):
+            if selected[i]:  # Only consider selected vertices
+                for j in range(num_vertices):
+                    if not selected[j] and graph[i][j]:  # If not selected and there's an edge
+                        if minimum > graph[i][j]:
+                            minimum = graph[i][j]
+                            x = i
+                            y = j
+
+        edges.append((x, y, minimum))  # Add edge to MST
+        selected[y] = True  # Include the vertex in the MST
+
+    return edges
+
+# Example usage
+if __name__ == "__main__":
+    # Adjacency matrix representation of the graph
+    graph = [
+        [0, 2, 0, 6, 0],
+        [2, 0, 3, 8, 5],
+        [0, 3, 0, 0, 7],
+        [6, 8, 0, 0, 9],
+        [0, 5, 7, 9, 0]
+    ]
+
+    mst_edges = prims_algorithm(graph)
+    print("Edges in the Minimum Spanning Tree:")
+    for x, y, weight in mst_edges:
+        print(f"{x} - {y}: {weight}")
