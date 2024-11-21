@@ -1,0 +1,26 @@
+def knapsack(weights, values, capacity, n):
+    # Base case: no items or no capacity
+    if n == 0 or capacity == 0:
+        return 0
+
+    # If the weight of the nth item is more than the capacity, skip it
+    if weights[n-1] > capacity:
+        return knapsack(weights, values, capacity, n-1)
+
+    # Return the maximum of two cases:
+    # 1. nth item included
+    # 2. nth item not included
+    else:
+        include_item = values[n-1] + knapsack(weights, values, capacity - weights[n-1], n-1)
+        exclude_item = knapsack(weights, values, capacity, n-1)
+        return max(include_item, exclude_item)
+
+# Example usage
+if __name__ == "__main__":
+    weights = [1, 2, 3]  # Weights of the items
+    values = [10, 15, 40]  # Values of the items
+    capacity = 6  # Maximum capacity of the knapsack
+    n = len(values)  # Number of items
+
+    max_value = knapsack(weights, values, capacity, n)
+    print("Maximum value in Knapsack =", max_value)
